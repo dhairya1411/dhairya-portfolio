@@ -1,0 +1,77 @@
+---
+title: "Nautica — Ending Blind Renewal Meetings"
+publishedAt: "2026-05-01"
+summary: "Sales reps at PolicyBazaar for Business were walking into high-stakes renewal meetings with no data. I identified the gap and defined the product that fixed it."
+tag: "PolicyBazaar for Business · Product Definition · B2B SaaS"
+---
+
+## The Problem Nobody Had Named
+
+At PolicyBazaar for Business, the Employee Benefits sales team renews corporate group health insurance policies annually. These are high-stakes conversations — a client's premium can jump 30–40% based on their employees' claims from the previous year.
+
+When a CFO asks "why has our premium gone up?" — the sales rep needs an answer.
+
+Before Nautica, they didn't have one.
+
+There was no tool that gave sales reps visibility into a client's historical claims data. No claim ratios. No risk profile. No projected premium. Just a renewal number handed down by the insurer, and a rep expected to defend it.
+
+I found this gap not through a formal brief, but by watching how the sales team actually prepared for meetings — and noticing what questions they couldn't answer.
+
+---
+
+## What I Defined
+
+I documented the product requirements for **Nautica** — a Sales Insight Generation Platform built on AWS QuickSight. Here's what it needed to show:
+
+**Incurred Claim Ratio (ICR)**
+The ratio of claims paid out to premium received. An ICR above 100% means the insurer paid more than they received — the direct mathematical reason a premium increases. Sales reps needed to be able to show clients this number and explain the link.
+
+**Loss Ratio**
+A portfolio-level risk metric used to identify accounts where the insurer is overexposed and likely to hike premiums further.
+
+**Client Claims Breakdown**
+Total claims by category (hospitalization, OPD, maternity) — so reps could point to exactly which claim types drove the ratio up.
+
+**Projected Renewal Premium**
+Based on the client's historical claims trend, what premium range should they expect? This gave reps a data-grounded anchor instead of just accepting the insurer's number.
+
+**Risk Profile Flag**
+A High / Medium / Low tier per client, allowing leadership to prioritize retention efforts for at-risk accounts.
+
+---
+
+## The Technical Decision That Mattered Most
+
+Standard claims aggregation would have overstated risk for clients with one-off high-value events — a cancer treatment, a major surgery.
+
+I built SQL logic to separate **recurring claims from non-recurring ones**. A client who had one catastrophic event last year shouldn't carry that risk profile permanently into their renewal conversation. The segmentation made ICR and risk scores accurate for the ongoing relationship — not distorted by outliers.
+
+This wasn't just a data engineering decision. It was a product judgment call: what story is the number telling, and is it the right story?
+
+---
+
+## Before and After
+
+**Before Nautica:**
+Sales rep walks into renewal meeting. CFO asks why the premium jumped. Rep says "industry trends" or "the insurer's calculation." Trust erodes. Client feels like a transaction, not a relationship.
+
+**After Nautica:**
+Sales rep walks in with a breakdown of exactly which claim categories drove the ICR from 78% to 112%. Can project what the premium would look like at different risk levels. Conversation shifts from adversarial to advisory.
+
+---
+
+## Impact
+
+- **~30% reduction** in manual reporting effort through automated QuickSight dashboards
+- **20+ ad-hoc analyses** delivered to leadership during the build, accelerating strategic decision-making
+- First time sales reps had a structured, data-backed client profile before renewal meetings
+
+---
+
+## The Lesson
+
+> Data that exists is not the same as data that is usable.
+
+Every piece of information that went into Nautica already existed in PolicyBazaar's Claims MIS. The problem wasn't data availability — it was that nobody had translated raw MIS data into the form a sales rep could use in a room, in real time, with a skeptical CFO.
+
+That translation is a product problem. And it was sitting there, unnamed, until someone looked at how people were actually preparing for meetings.

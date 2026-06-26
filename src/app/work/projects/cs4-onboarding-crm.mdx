@@ -1,0 +1,140 @@
+---
+title: "Building the Onboarding Team's Eyes"
+publishedAt: "2026-06-10"
+summary: "Ambak's onboarding team had no visibility into which partners were activated, dormant, or churned. I designed a CRM that changed that."
+tag: "Ambak Home Loans · 0→1 Product · CRM Design"
+---
+
+## The Problem
+
+Ambak's onboarding team is responsible for the most important thing in a partner-led model: getting new partners to actually use the product.
+
+But they had no tool to answer the three questions they needed answered every single day:
+
+1. Is this partner activated?
+2. Are they still coming back?
+3. What should I do about it?
+
+Without answers, every intervention was reactive. A partner disengaged? The onboarding team found out through an RM complaint — weeks later, after the damage was done.
+
+---
+
+## Why This Was Urgent
+
+My activation analysis (CS1) had already shown that RMs were using Ambak Saathi on behalf of partners — masking the true state of adoption. This meant not only was the activation low, but the team couldn't see *how* low, or *for whom*.
+
+You can't run proactive partner management without data. And you can't have data without the right tool to surface it.
+
+---
+
+## What I Designed
+
+A **Partner Activation CRM** — a dedicated module inside Ambak Sangam (Ambak's in-house CRM) that surfaces individual partner health at a glance.
+
+### The Data Model
+
+**Activation Status** — where is the partner in their onboarding journey?
+
+<table style={{width:'100%', borderCollapse:'collapse', marginBottom:'1.5rem'}}>
+  <thead>
+    <tr style={{borderBottom:'1px solid #333'}}>
+      <th style={{textAlign:'left', padding:'8px 12px', color:'#aaa', fontWeight:600}}>Status</th>
+      <th style={{textAlign:'left', padding:'8px 12px', color:'#aaa', fontWeight:600}}>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>Never Opened</td><td style={{padding:'8px 12px'}}>Registered, app never launched</td></tr>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>Opened, Not Activated</td><td style={{padding:'8px 12px'}}>Opened app, no meaningful action taken</td></tr>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>Activated</td><td style={{padding:'8px 12px'}}>Completed at least one core feature action</td></tr>
+    <tr><td style={{padding:'8px 12px'}}>Activated + Retained</td><td style={{padding:'8px 12px'}}>Core action completed, returned within 30 days</td></tr>
+  </tbody>
+</table>
+
+**Retention Flag** — are they sticking around?
+
+<table style={{width:'100%', borderCollapse:'collapse', marginBottom:'1.5rem'}}>
+  <thead>
+    <tr style={{borderBottom:'1px solid #333'}}>
+      <th style={{textAlign:'left', padding:'8px 12px', color:'#aaa', fontWeight:600}}>Flag</th>
+      <th style={{textAlign:'left', padding:'8px 12px', color:'#aaa', fontWeight:600}}>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>Active</td><td style={{padding:'8px 12px'}}>App used in last 30 days</td></tr>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>At Risk</td><td style={{padding:'8px 12px'}}>No activity in 30–60 days</td></tr>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>Dormant</td><td style={{padding:'8px 12px'}}>No activity in 60–90 days</td></tr>
+    <tr><td style={{padding:'8px 12px'}}>Churned</td><td style={{padding:'8px 12px'}}>No activity in 90+ days, no active pipeline</td></tr>
+  </tbody>
+</table>
+
+**Usage Type** — who is actually doing the action?
+- Self-serving: partner login
+- RM-proxied: RM login on partner's behalf
+
+This last field is the one nobody else had thought to track. Without it, "activated" could mean the partner — or it could mean their RM did it for them. The proxy detection flag from CS1 became a core field in the CRM.
+
+---
+
+## The Key Design Decision: CRM, Not Dashboard
+
+I made a deliberate product decision to build a **CRM view, not a BI dashboard**.
+
+A dashboard shows you what happened. A CRM tells you what to do next.
+
+The most important column in the whole view is the **Recommended Action** column — a rule-based tag that tells the onboarding team exactly what to do with each partner:
+
+<table style={{width:'100%', borderCollapse:'collapse', marginBottom:'1.5rem'}}>
+  <thead>
+    <tr style={{borderBottom:'1px solid #333'}}>
+      <th style={{textAlign:'left', padding:'8px 12px', color:'#aaa', fontWeight:600}}>Status</th>
+      <th style={{textAlign:'left', padding:'8px 12px', color:'#aaa', fontWeight:600}}>Recommended Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>Never Opened</td><td style={{padding:'8px 12px'}}>Priority onboarding call</td></tr>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>Opened, Not Activated</td><td style={{padding:'8px 12px'}}>Feature education call</td></tr>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>Activated, At Risk</td><td style={{padding:'8px 12px'}}>Re-engagement outreach</td></tr>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>RM-proxied</td><td style={{padding:'8px 12px'}}>RM coaching flag</td></tr>
+    <tr><td style={{padding:'8px 12px'}}>Churned</td><td style={{padding:'8px 12px'}}>Churn interview — escalate if recoverable</td></tr>
+  </tbody>
+</table>
+
+The onboarding team doesn't need to interpret data. They need to know who to call next.
+
+---
+
+## Integration Decision: Ambak Sangam, Not Standalone
+
+The easy path was building a new standalone tool. The right path was integrating into Ambak Sangam — the CRM the team already used every day.
+
+A standalone tool requires behavior change. An integrated module doesn't. For a small operations team with limited bandwidth, adoption friction is a feature, not an edge case.
+
+The data syncs CleverTap event data (app activity, per-login identity) with Ambak Sangam partner records, computing status fields on a defined refresh cadence.
+
+---
+
+## Metrics
+
+**North Star:** % of registered partners reaching "Activated" status within 30 days of joining Ambak
+
+**Supporting:**
+- Retention rate at 30 / 60 / 90 days post-activation
+- Proxy rate: % of active sessions RM-initiated vs. partner-initiated
+- Onboarding team intervention rate: % of "At Risk" partners contacted within 7 days of flag
+- Churn recovery rate: % of "Dormant" partners re-activated following outreach
+
+---
+
+## Status
+
+Currently in development. Requirements handed to engineering. First tool giving the onboarding team individual-level, proactive visibility into partner activation across the full Ambak network.
+
+---
+
+## The Insight
+
+> The best tool that nobody uses is worse than a decent tool embedded in an existing workflow.
+
+And:
+
+> You have to define "activated" precisely before you build anything on top of it. "Has the partner used the app" is too vague to measure. "Has the partner independently completed at least one core feature action" is specific, actionable, and honest.

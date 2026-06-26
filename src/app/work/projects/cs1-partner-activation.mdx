@@ -1,0 +1,95 @@
+---
+title: "From Proxy Users to Self-Sufficient Partners"
+publishedAt: "2026-06-01"
+summary: "How I uncovered that 5,000 'active users' on Ambak Saathi were largely RMs acting on behalf of partners — and what I did about it."
+tag: "Ambak Home Loans · Activation · User Research"
+---
+
+## The Setup
+
+Ambak Home Loans distributes home loans through a network of 5,000+ independent agents and DSAs — called partners — who originate loan leads. Their primary tool is **Ambak Saathi**, a mobile app for checking CIBIL scores, accessing approved project listings, and tracking earnings.
+
+When I joined, the app showed healthy usage numbers. 5,000 unique users over 6 months. Feature activity logged daily. Everything looked fine.
+
+It wasn't.
+
+---
+
+## The Discovery
+
+I started by looking at feature adoption in CleverTap. I built funnels for all four core features:
+
+<table style={{width:'100%', borderCollapse:'collapse', marginBottom:'1.5rem'}}>
+  <thead>
+    <tr style={{borderBottom:'1px solid #333'}}>
+      <th style={{textAlign:'left', padding:'8px 12px', color:'#aaa', fontWeight:600}}>Feature</th>
+      <th style={{textAlign:'left', padding:'8px 12px', color:'#aaa', fontWeight:600}}>Adoption Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>My Earnings</td><td style={{padding:'8px 12px'}}>Highest (passive — money pull)</td></tr>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>CIBIL Score Checker</td><td style={{padding:'8px 12px'}}>~20%</td></tr>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>APF (Approval Project Finance)</td><td style={{padding:'8px 12px'}}>Low</td></tr>
+    <tr><td style={{padding:'8px 12px'}}>Banker's Directory</td><td style={{padding:'8px 12px'}}>Lowest</td></tr>
+  </tbody>
+</table>
+
+Twenty percent on the app's flagship use-case — the tool partners need most to evaluate borrowers. That's a red flag. But numbers alone don't tell you why.
+
+So I went to the people.
+
+I spoke to **30–40 Relationship Managers** — Ambak's internal team who manage partner relationships. What they told me changed the entire framing of the problem:
+
+> "We just do it for them. They call us, we check the CIBIL, we tell them the number."
+
+RMs were using Ambak Saathi **on behalf of partners**. The 5,000 "users" in CleverTap included RMs acting as proxies. The partners themselves had largely never independently used the app.
+
+---
+
+## Three Layers of Why
+
+Once I found the proxy behavior, I needed to understand what caused it. Three things stacked together:
+
+**Layer 1 — The CIBIL data was wrong.** Multiple RMs flagged that the CIBIL scores shown in the app were inaccurate. Partners who did try the feature got bad data, lost trust, and never came back. The app's most important feature was unreliable.
+
+**Layer 2 — Partners didn't know what the app could do.** There was no structured onboarding. New partners were handed a login and told to use it. Nobody walked them through what CIBIL checking, APF lookup, or Banker's Directory actually meant for their business.
+
+**Layer 3 — The proxy removed the forcing function.** When the RM always does it anyway, there's no urgency to learn. Proxy behavior is self-perpetuating — it removes the trigger that would force independent adoption.
+
+---
+
+## What I Did
+
+**Analytics Audit**
+The CleverTap event mapping itself was incorrect in places — some events weren't properly named, making funnel data unreliable. I audited the mapping and proposed corrected nomenclature. You can't fix activation if you can't accurately measure it.
+
+**Partner Activation CRM**
+The biggest gap was that Ambak's onboarding team had no visibility into which partners were activated, dormant, or had never engaged at all. I defined requirements for a **Partner Activation CRM** — integrated into Ambak's in-house platform, Ambak Sangam — that surfaces:
+- Activation status per partner (Never Opened / Opened / Activated / Retained)
+- Retention flags (Active / At Risk / Dormant / Churned)
+- Whether activity was self-served or RM-proxied
+- Recommended next action for the onboarding team
+
+The goal: turn a reactive firefighting team into a proactive intervention team.
+
+**Engagement Campaigns**
+While the CRM was in development, I executed two partner engagement campaigns to keep the network active — detailed in a separate case study.
+
+---
+
+## The Core Insight
+
+> Engagement numbers lie when proxies are in the system.
+
+5,000 users can look like a healthy product metric while hiding near-zero genuine adoption. The proxy behavior was invisible in dashboards. It only surfaced through direct conversations with RMs.
+
+No amount of funnel analysis would have found this. You had to talk to people.
+
+---
+
+## What I'd Measure
+
+- **North Star:** % of registered partners self-serving at least one core feature per month
+- **Proxy rate:** % of app sessions initiated by RMs vs. partners (tracked separately)
+- **Activation rate:** % completing first independent action within 30 days of joining
+- **CIBIL accuracy rate:** % of checks where partner receives a complete, correct report
