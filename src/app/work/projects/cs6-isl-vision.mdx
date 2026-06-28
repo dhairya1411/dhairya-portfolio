@@ -1,0 +1,85 @@
+---
+title: "ISL Vision: Real-Time Indian Sign Language Recognition"
+publishedAt: "2026-05-01"
+summary: "Fine-tuned a VideoMAE Vision Transformer on 262 Indian Sign Language classes, achieving 91.45% Top-1 accuracy — 25 percentage points above CNN-LSTM baselines — and shipped a real-time desktop demo that runs on CPU."
+tag: "Final Year Project · ML · Computer Vision"
+---
+
+## The Problem
+
+Indian Sign Language has 262 distinct signs. The deaf and hard-of-hearing community in India — estimated at over 18 million people — relies on ISL as a primary mode of communication. Yet ISL recognition tooling is nearly non-existent as open-source software, and the models that do exist are built on CNN-LSTM architectures that struggle with the core challenge: **signs are temporal**. A gesture isn't a frame — it's a sequence of frames with motion dependencies across time.
+
+Existing CNN-LSTM approaches were hitting ~66% Top-1 accuracy on 262-class classification. That's not good enough to be useful in practice.
+
+---
+
+## The Hypothesis
+
+Vision Transformers trained on video (VideoMAE) learn temporal attention across frames by design — they don't need hand-crafted temporal feature engineering. If fine-tuned on ISL data, they should handle the motion complexity that CNN-LSTMs approximate poorly.
+
+The question was whether transfer learning from a large video dataset (Kinetics-400) would translate to a domain as specialized as Indian Sign Language.
+
+---
+
+## What I Built
+
+**Model:** Fine-tuned `VideoMAE` (ViT-B/16 pretrained on Kinetics-400) on a 262-class ISL video dataset using HuggingFace Transformers and PyTorch on Kaggle GPU (T4 x2).
+
+**Real-time demo:** A desktop application that:
+1. Records a **1.5-second gesture** via webcam
+2. Extracts frames and runs VideoMAE inference in a **background thread** (keeps UI responsive)
+3. Displays the **predicted sign + confidence score** in real time on CPU hardware
+
+<table style={{width:'100%', borderCollapse:'collapse', marginBottom:'1.5rem'}}>
+  <thead>
+    <tr style={{borderBottom:'1px solid #333'}}>
+      <th style={{textAlign:'left', padding:'8px 12px', color:'#aaa', fontWeight:600}}>Metric</th>
+      <th style={{textAlign:'left', padding:'8px 12px', color:'#aaa', fontWeight:600}}>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>Top-1 Accuracy</td><td style={{padding:'8px 12px'}}><strong>91.45%</strong></td></tr>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>Classes</td><td style={{padding:'8px 12px'}}>262 ISL signs</td></tr>
+    <tr style={{borderBottom:'1px solid #222'}}><td style={{padding:'8px 12px'}}>Prior CNN-LSTM baseline</td><td style={{padding:'8px 12px'}}>~66%</td></tr>
+    <tr><td style={{padding:'8px 12px'}}>Improvement</td><td style={{padding:'8px 12px'}}>+25 percentage points</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Why VideoMAE Over CNN-LSTM
+
+CNN-LSTMs process spatial features (CNN) and then model temporal dependencies (LSTM) as a two-stage pipeline. The temporal signal is a downstream artifact of spatial features — which means motion across frames is never directly attended to.
+
+VideoMAE uses **masked video modeling** during pre-training: it masks ~90% of video patches and learns to reconstruct them, forcing the model to build rich temporal representations. During fine-tuning on ISL, this translates directly — the model already understands how motion unfolds across a short video clip.
+
+The 25-point accuracy jump wasn't primarily about architecture size. It was about the right inductive bias for the problem.
+
+---
+
+## Tech Stack
+
+- **Model:** VideoMAE (HuggingFace Transformers)
+- **Framework:** PyTorch
+- **Computer Vision:** OpenCV
+- **GUI:** CustomTkinter
+- **Training:** Kaggle (GPU T4 x2)
+- **Language:** Python
+
+---
+
+## What I'd Do Next
+
+The current model runs on CPU with a 1.5-second clip window. Three things I'd improve with more time:
+
+**Reduce clip window to 0.5s** — 1.5 seconds is too long for natural real-time interaction. Faster inference would require either model distillation or a smaller ViT variant (VideoMAE-Small).
+
+**Continuous recognition** — the current flow is gesture-by-gesture. A sentence-level system would require sliding window inference and a language model layer to assemble signs into coherent output.
+
+**Dataset expansion** — 262 classes covers core ISL vocabulary but not full conversational range. Collecting or sourcing data for 500+ classes would meaningfully improve utility.
+
+---
+
+## GitHub
+
+[github.com/dhairya1411/ISL_Visions](https://github.com/dhairya1411/ISL_Visions)
