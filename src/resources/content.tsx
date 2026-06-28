@@ -87,7 +87,7 @@ const about: About = {
         and partner-led business models. I've spent the last six months embedded in real product
         problems — running user research with 30+ Relationship Managers, building adoption funnels
         in CleverTap, designing a CRM from requirements to engineering handoff, and executing
-        campaigns across a 5,000-partner network. I think in systems, work close to data, and
+        campaigns across Ambak's 2,500+ partner network. I think in systems, work close to data, and
         genuinely enjoy talking to users — especially when what they say doesn't match what the
         numbers show.
       </>
