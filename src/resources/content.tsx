@@ -100,7 +100,7 @@ const about: About = {
       {
         company: "Ambak Home Loans",
         timeframe: "May 2026 – Present",
-        role: "Product Intern — Activation & Partner Growth",
+        role: "Product Intern",
         achievements: [
           <>
             Conducted primary research with <strong>30–40 Relationship Managers</strong> to
