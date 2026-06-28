@@ -106,7 +106,7 @@ export default function Home() {
                 variant="primary"
                 size="m"
                 weight="default"
-                suffixIcon="openLink"
+                suffixIcon="arrowUpRight"
               >
                 View Resume
               </Button>
