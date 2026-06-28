@@ -103,10 +103,10 @@ const about: About = {
         role: "Product Intern — Activation & Partner Growth",
         achievements: [
           <>
-            Conducted primary research with <strong>30–40 Relationship Managers</strong>,
-            uncovering that RMs were using Ambak Saathi on behalf of partners — identifying
-            proxy-user behavior as the root cause of activation failure across a 5,000-partner
-            network.
+            Conducted primary research with <strong>30–40 Relationship Managers</strong> to
+            diagnose why 2,500+ registered partners weren't independently using Ambak Saathi —
+            uncovering a workflow gap where partners relied on RMs and existing bank tie-ups
+            instead of engaging with the app themselves.
           </>,
           <>
             Built <strong>CleverTap feature adoption funnels</strong> for 4 core app features
