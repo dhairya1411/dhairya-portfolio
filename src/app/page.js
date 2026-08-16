@@ -297,10 +297,101 @@ export default function Home() {
               How I think about a product problem — from signal to shipped solution.
             </h2>
             <p className="section-sub">
-              Two deep-dives structured the way I actually work: understand the problem,
+              Deep-dives structured the way I actually work: understand the problem,
               form a hypothesis, define the solution, measure the impact.
             </p>
             <div className="cs-grid">
+              {/* PolicyLens — shipped AI product */}
+              <div className="cs-card">
+                <div className="cs-head">
+                  <div>
+                    <span className="cs-tag">InsurTech · AI product I shipped</span>
+                    <h3 style={{ marginTop: 12 }}>
+                      PolicyLens — &ldquo;Is my claim actually covered?&rdquo;
+                    </h3>
+                    <div className="cs-role">
+                      Solo · problem → build → evals → ship
+                    </div>
+                  </div>
+                </div>
+                <div className="cs-block">
+                  <span className="k">Problem</span>
+                  <p>
+                    People discover what their health policy excludes <strong>at the hospital
+                    counter</strong>, not before. The information is already in the 40-page PDF
+                    they own — they just can&apos;t read it. The gap is comprehension, not data.
+                  </p>
+                </div>
+                <div className="cs-block">
+                  <span className="k">What I built</span>
+                  <p>
+                    Upload a policy → plain-language breakdown of coverage, exclusions, waiting
+                    periods and sub-limits. Then describe a real situation and get a{" "}
+                    <strong>verdict, the documents you&apos;ll need, and the risks that get claims
+                    rejected</strong> — every statement citing the exact clause and page.
+                  </p>
+                </div>
+                <div className="cs-block">
+                  <span className="k">The PM decision that mattered</span>
+                  <p>
+                    Not all errors are equal here. Saying &ldquo;not covered&rdquo; when it is
+                    costs a phone call; saying <strong>&ldquo;covered&rdquo; when it&apos;s
+                    excluded sends someone to file a claim that gets rejected</strong>. So I made
+                    that the north-star metric — a <strong>dangerous-error rate</strong>, target
+                    zero — and built a 24-scenario eval suite that fails the build if it isn&apos;t met.
+                  </p>
+                </div>
+                <div className="cs-block">
+                  <span className="k">What the evals caught</span>
+                  <p>
+                    My own &ldquo;fix&rdquo; introduced a new dangerous error: the model let a
+                    sub-limit override an unmet waiting period and called an 18-month-old policy
+                    covered for a 24-month-wait procedure. <strong>Root cause was rule precedence</strong>,
+                    so I restructured the prompt into five sequential gates where a later rule can
+                    never overturn an earlier rejection.
+                  </p>
+                </div>
+                <div className="cs-impact">
+                  <div>
+                    <div className="num">24</div>
+                    <div className="lbl">clause-grounded eval scenarios, run on every change</div>
+                  </div>
+                  <div>
+                    <div className="num">0</div>
+                    <div className="lbl">dangerous errors — the ship/no-ship gate</div>
+                  </div>
+                  <div>
+                    <div className="num">100%</div>
+                    <div className="lbl">of statements cite a real clause, or aren&apos;t shown</div>
+                  </div>
+                </div>
+                <div className="cs-stack">
+                  <span>Problem definition</span>
+                  <span>AI guardrails</span>
+                  <span>Eval design</span>
+                  <span>Next.js</span>
+                  <span>RAG + citations</span>
+                </div>
+                <div className="cs-links">
+                  <a
+                    className="cs-link cs-link-primary"
+                    href="https://policylens-nine.vercel.app"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Try it live →
+                  </a>
+                  <a
+                    className="cs-link"
+                    href="https://github.com/dhairya1411/Policylens"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Code &amp; eval suite
+                  </a>
+                </div>
+              </div>
+
               {/* Ambak */}
               <div className="cs-card">
                 <div className="cs-head">
