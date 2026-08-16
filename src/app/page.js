@@ -361,8 +361,8 @@ export default function Home() {
                     <div className="lbl">dangerous errors — the ship/no-ship gate</div>
                   </div>
                   <div>
-                    <div className="num">100%</div>
-                    <div className="lbl">of statements cite a real clause, or aren&apos;t shown</div>
+                    <div className="num">91.7%</div>
+                    <div className="lbl">pass rate, up from 79.2% at baseline</div>
                   </div>
                 </div>
                 <div className="cs-stack">

@@ -95,7 +95,20 @@ one: covering clause → waiting periods (*exceptions checked first*) → expens
 exclusions → limits. The "a cap is not a denial" rule now only applies to claims that already
 passed the first four gates.
 
-_[v3 verification pending — add final pass rate + dangerous-error rate here]_
+**Verified: 91.7% pass (22/24), dangerous-error rate 0.0%.** It fixed both v2 regressions *and* v1's
+original dangerous error, without introducing new ones. Exclusions 8/8, waiting periods 5/5, and the
+deliberately vague scenario still correctly returns "Unclear."
+
+## Knowing when to stop
+
+Two scenarios still fail: a deluxe room above the room-rent cap, and a ₹3,500 ambulance bill against a
+₹2,000 cap. The model reads a **monetary cap as a denial** rather than a reduced payout — it cites the
+right clause, but labels the verdict too conservatively.
+
+I chose not to fix them. Both fail in the **safe direction**: a user is told to verify rather than sent
+to file a claim that gets rejected. v2 had already shown that another prompt edit can introduce a
+*dangerous* error, and each full eval costs a day of free-tier quota. Shipping with a logged, safe-direction
+limitation beat risking a regression on the metric that actually matters.
 
 ## What I'd tell a hiring manager
 
