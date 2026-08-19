@@ -279,3 +279,4 @@ footer.foot{border-top:1px solid var(--border);padding:30px 0}
   .edu{flex-direction:column;align-items:flex-start;gap:10px}
   .page-head{padding:124px 0 0}
 }
+.tl-project{color:var(--faint);font-size:13px;margin-top:4px;font-style:italic}

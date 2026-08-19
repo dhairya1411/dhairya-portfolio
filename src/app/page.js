@@ -123,23 +123,39 @@ export default function Home() {
                 </h3>
                 <ul>
                   <li>
-                    Interviewed <strong>30–40 Relationship Managers</strong> to find why
-                    2,500+ registered partners never used the app — they were routing
-                    leads through RMs and bank tie-ups, bypassing it entirely.
+                    Ran primary research with <strong>30–40 Relationship Managers</strong>{" "}
+                    to diagnose why 2,500+ registered partners weren&apos;t independently
+                    using Ambak Saathi — uncovering that partners submitted leads via RMs
+                    and processed loans through existing bank tie-ups, bypassing the app
+                    entirely.
                   </li>
                   <li>
-                    Built the first activation funnels in CleverTap across 4 core
-                    features, exposing <strong>sub-20% adoption</strong> on the flagship
-                    CIBIL feature.
+                    Built <strong>CleverTap feature adoption funnels</strong> for 4 core
+                    app features (CIBIL Score, APF, Banker&apos;s Directory, My Earnings),
+                    establishing the first baseline activation metrics and revealing{" "}
+                    <strong>sub-20% adoption</strong> on the flagship CIBIL feature.
                   </li>
                   <li>
-                    Defined a <strong>Partner Activation CRM</strong> — live activation
-                    status, retention health, and next-best-action per partner.
+                    Defined requirements for a <strong>Partner Activation CRM</strong>{" "}
+                    integrated into Ambak Sangam, giving the onboarding team real-time
+                    visibility into activation status, retention health (Active / At Risk /
+                    Dormant / Churned), and the recommended next action per partner.
                   </li>
                   <li>
-                    Shipped <strong>2 engagement campaigns</strong> over WhatsApp
-                    (Serri.ai) and Email API to re-engage dormant partners before they
-                    churned silently.
+                    <strong>Removed the engineering dependency from partner
+                    communications</strong> — migrated triggers out of the backend into
+                    CleverTap, so the team now builds and fires campaigns self-serve
+                    without waiting on a release.
+                  </li>
+                  <li>
+                    Automated the workflows of the <strong>Partner Experience</strong> and{" "}
+                    <strong>Pre-Sales (PST) ops</strong> teams, cutting their manual effort
+                    by <strong>70%</strong>.
+                  </li>
+                  <li>
+                    Audited CleverTap event mapping across Ambak Saathi and proposed a
+                    corrected event nomenclature, improving analytics reliability for
+                    product decisions.
                   </li>
                 </ul>
               </div>
@@ -153,24 +169,38 @@ export default function Home() {
                   Product Intern ·{" "}
                   <span className="org">PolicyBazaar for Business</span>
                 </h3>
+                <p className="tl-project">
+                  Nautica — Sales Insight Generation Platform (Employee Benefits)
+                </p>
                 <ul>
                   <li>
-                    Found that enterprise renewal reps had{" "}
-                    <strong>no visibility into client claims history</strong>, and defined
-                    Nautica — a sales-insight platform on AWS QuickSight.
+                    Identified a critical information gap in the enterprise renewal sales
+                    process — reps had <strong>zero visibility into client claims
+                    history</strong> — and defined the product requirements for Nautica, a
+                    Sales Insight Platform built on AWS QuickSight.
                   </li>
                   <li>
-                    Scoped dashboards for claim ratios, loss ratios and projected renewal
-                    premiums, giving reps a data-backed basis for negotiation.
+                    Defined dashboard scope covering Incurred Claim Ratios, Loss Ratios,
+                    projected renewal premiums and client risk profiles, giving the sales
+                    team a data-backed foundation for renewal negotiations for the first
+                    time.
                   </li>
                   <li>
-                    Designed logic separating recurring from non-recurring medical
-                    claims, improving risk-assessment accuracy by an estimated{" "}
-                    <strong>15%</strong>.
+                    Defined <strong>logic to segment recurring vs. non-recurring medical
+                    claims</strong>, ensuring risk scores reflected ongoing client risk
+                    rather than one-time event distortion — improving risk-assessment
+                    accuracy by an estimated <strong>15%</strong>.
                   </li>
                   <li>
-                    Cut manual reporting effort by <strong>~30%</strong> and delivered 20+
-                    ad-hoc analyses for the Employee Benefits strategy team.
+                    Reduced manual reporting effort by <strong>~30%</strong> through
+                    automated QuickSight dashboards and delivered{" "}
+                    <strong>20+ ad-hoc leadership analyses</strong>, accelerating decisions
+                    across the Employee Benefits strategy team.
+                  </li>
+                  <li>
+                    Acted as the cross-functional connector between sales, strategy and
+                    data/tech — translating business needs into data requirements and
+                    surfacing insights in sales-ready language.
                   </li>
                 </ul>
               </div>
