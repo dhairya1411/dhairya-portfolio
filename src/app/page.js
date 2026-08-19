@@ -136,6 +136,11 @@ export default function Home() {
                     Defined a <strong>Partner Activation CRM</strong> — live activation
                     status, retention health, and next-best-action per partner.
                   </li>
+                  <li>
+                    Shipped <strong>2 engagement campaigns</strong> over WhatsApp
+                    (Serri.ai) and Email API to re-engage dormant partners before they
+                    churned silently.
+                  </li>
                 </ul>
               </div>
               <div className="tl-item">
@@ -159,6 +164,11 @@ export default function Home() {
                     premiums, giving reps a data-backed basis for negotiation.
                   </li>
                   <li>
+                    Designed logic separating recurring from non-recurring medical
+                    claims, improving risk-assessment accuracy by an estimated{" "}
+                    <strong>15%</strong>.
+                  </li>
+                  <li>
                     Cut manual reporting effort by <strong>~30%</strong> and delivered 20+
                     ad-hoc analyses for the Employee Benefits strategy team.
                   </li>
@@ -168,24 +178,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* EDUCATION */}
-        <section id="education">
-          <div className="container">
-            <div className="eyebrow mono">03 · Education</div>
-            <div className="edu">
-              <div>
-                <h3>B.Tech, Computer Science &amp; Engineering</h3>
-                <p>Amity University, Lucknow</p>
-              </div>
-              <span className="edu-year mono">2022 — 2026</span>
-            </div>
-          </div>
-        </section>
-
         {/* WORK TEASER */}
         <section id="work-teaser">
           <div className="container">
-            <div className="eyebrow mono">04 · Work</div>
+            <div className="eyebrow mono">03 · Work</div>
             <h2 className="section-title">
               Products I built end-to-end — problem, guardrails, evals, ship.
             </h2>
@@ -204,7 +200,7 @@ export default function Home() {
         <section id="contact" className="contact">
           <div className="container">
             <div className="eyebrow mono" style={{ justifyContent: "center" }}>
-              05 · Contact
+              04 · Contact
             </div>
             <h2>Let&apos;s build something users actually adopt.</h2>
             <p>
