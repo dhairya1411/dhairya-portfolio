@@ -692,10 +692,11 @@ export default function Home() {
               <div className="proj">
                 <h3>Retail Customer Behavior Analytics</h3>
                 <p>
-                  Analysed 3,900+ transactions ($230K+ revenue) in Python &amp; Power BI —
-                  found male customers drove 2.1x more revenue and flagged 839 discount
-                  users as a loyalty-conversion opportunity, with a targeted program to
-                  convert 700+ returning buyers.
+                  Analysed 3,900 transactions ($233K revenue) in Python, PostgreSQL &amp;
+                  Power BI — found male customers drove 2.1x more revenue than female, and
+                  flagged 839 above-average spenders who still buy on discount as a
+                  margin-recovery segment, alongside 701 returning buyers as the target for
+                  a loyalty program.
                 </p>
                 <div className="cs-stack">
                   <span>Python</span>
