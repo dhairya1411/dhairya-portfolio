@@ -224,3 +224,58 @@ footer.foot{border-top:1px solid var(--border);padding:30px 0}
   .nav-links.open{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg-2);border-bottom:1px solid var(--border);padding:16px 24px;gap:16px}
   .cs-impact{grid-template-columns:1fr;gap:16px}
 }
+
+/* ============ multi-page: work index, project pages ============ */
+.page-head{padding:150px 0 0}
+.page-head + section{padding-top:34px}
+.page-head .eyebrow{margin-bottom:14px}
+.page-title{font-size:clamp(30px,4.6vw,46px);font-weight:750;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px}
+.page-sub{color:var(--muted);font-size:16.5px;max-width:70ch;line-height:1.65}
+.back-link{display:inline-block;color:var(--faint);font-size:12.5px;margin-bottom:22px;transition:color .18s}
+.back-link:hover{color:var(--accent)}
+
+.work-list{display:flex;flex-direction:column;gap:22px}
+.work-item{border:1px solid var(--border);border-radius:var(--radius);padding:30px;background:var(--surface);transition:all .25s}
+.work-item:hover{border-color:var(--border-strong);transform:translateY(-3px)}
+.work-kind{font-size:11.5px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+.work-item h2{font-size:22px;font-weight:700;letter-spacing:-0.02em;margin:10px 0 12px}
+.work-tagline{color:var(--muted);font-weight:450;font-size:17px}
+.tag-working{display:inline-block;margin-left:10px;vertical-align:middle;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:999px;padding:3px 10px}
+.work-item p{color:var(--muted);font-size:15px;line-height:1.7;max-width:78ch}
+
+.cs-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 0 4px;border-top:1px solid var(--border);padding-top:22px}
+.cs-meta .k{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+.cs-meta p{color:var(--text);font-size:14px;line-height:1.5}
+
+.prose{padding-top:10px}
+.prose > *{max-width:74ch}
+.prose h2{font-size:23px;font-weight:700;letter-spacing:-0.02em;margin:46px 0 14px;padding-top:18px;border-top:1px solid var(--border)}
+.prose h3{font-size:17px;font-weight:650;margin:30px 0 10px;color:var(--accent)}
+.prose p{color:var(--muted);font-size:15.5px;line-height:1.78;margin-bottom:16px}
+.prose strong{color:var(--text);font-weight:640}
+.prose em{color:var(--text);font-style:italic}
+.prose ul{margin:0 0 18px;padding-left:20px}
+.prose li{color:var(--muted);font-size:15.5px;line-height:1.75;margin-bottom:9px}
+.prose li::marker{color:var(--accent)}
+.prose code{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:2px 6px}
+.prose .callout{border-left:2px solid var(--accent-line);background:var(--accent-soft);border-radius:0 8px 8px 0;padding:14px 18px;color:var(--text);font-size:15.5px}
+.prose .cs-impact{margin:26px 0 30px}
+
+.table-wrap{overflow-x:auto;margin:0 0 24px}
+.prose table{width:100%;border-collapse:collapse;font-size:14.5px}
+.prose th{text-align:left;font-weight:640;color:var(--text);border-bottom:1px solid var(--border-strong);padding:10px 14px 10px 0}
+.prose td{color:var(--muted);border-bottom:1px solid var(--border);padding:11px 14px 11px 0;line-height:1.6;vertical-align:top}
+
+.edu{display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);padding:22px 26px;margin-top:26px}
+.edu h3{font-size:17px;font-weight:650;margin-bottom:4px}
+.edu p{color:var(--muted);font-size:14.5px}
+.edu-year{color:var(--faint);font-size:12.5px;white-space:nowrap}
+
+@media (max-width:760px){
+  .cs-meta{grid-template-columns:1fr;gap:14px}
+  .work-item{padding:22px}
+  .work-item h2{font-size:19px}
+  .work-tagline{display:block;font-size:15px;margin-top:4px}
+  .edu{flex-direction:column;align-items:flex-start;gap:10px}
+  .page-head{padding:124px 0 0}
+}

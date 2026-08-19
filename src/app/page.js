@@ -1,62 +1,32 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import SiteNav from "../components/SiteNav";
+import SiteFooter from "../components/SiteFooter";
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const mainRef = useRef(null);
 
   useEffect(() => {
     const io = new IntersectionObserver(
-      (entries) =>
+      (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("in");
-            io.unobserve(e.target);
-          }
-        }),
+          if (e.isIntersecting) e.target.classList.add("in");
+        });
+      },
       { threshold: 0.12 }
     );
     const els = document.querySelectorAll("section .container > *");
-    els.forEach((el, i) => {
+    els.forEach((el) => {
       el.classList.add("reveal");
-      el.style.transitionDelay = Math.min(i, 4) * 60 + "ms";
       io.observe(el);
     });
     return () => io.disconnect();
   }, []);
 
-  const closeMenu = () => setMenuOpen(false);
-
   return (
     <>
-      <header className="nav">
-        <div className="container nav-inner">
-          <a className="brand" href="#top">
-            <span className="badge">DR</span> Dhairya Rastogi
-          </a>
-          <nav className={"nav-links" + (menuOpen ? " open" : "")}>
-            <a href="#about" onClick={closeMenu}>About</a>
-            <a href="#experience" onClick={closeMenu}>Experience</a>
-            <a
-              className="nav-cta"
-              href="/Dhairya_Rastogi_Resume.pdf"
-              target="_blank"
-              rel="noopener"
-              onClick={closeMenu}
-            >
-              Resume ↗
-            </a>
-          </nav>
-          <button
-            className="menu-btn"
-            aria-label="Menu"
-            onClick={() => setMenuOpen((v) => !v)}
-          >
-            ☰
-          </button>
-        </div>
-      </header>
+      <SiteNav active="about" />
 
       <main id="top" ref={mainRef}>
         {/* HERO */}
@@ -64,6 +34,7 @@ export default function Home() {
           <div className="container">
             <div className="status">
               <span className="dot"></span> Open to Associate Product Manager roles · 2026
+              · Gurgaon
             </div>
             <h1>
               Dhairya Rastogi
@@ -71,12 +42,12 @@ export default function Home() {
             </h1>
             <p className="lead">
               I turn <strong>user research and product data into decisions</strong> —
-              diagnosing why users don&apos;t activate, defining the CRM and features
-              that fix it, and shipping campaigns that move the metric. Currently a
-              Product Intern at <strong>Ambak Home Loans</strong>.
+              diagnosing why users don&apos;t activate, defining the CRM and features that
+              fix it, and shipping campaigns that move the metric. Currently a Product
+              Intern at <strong>Ambak Home Loans</strong>.
             </p>
             <div className="btns">
-              <a className="btn btn-primary" href="#projects">View Projects →</a>
+              <a className="btn btn-primary" href="/work">View My Work →</a>
               <a
                 className="btn btn-ghost"
                 href="/Dhairya_Rastogi_Resume.pdf"
@@ -111,101 +82,24 @@ export default function Home() {
         <section id="about">
           <div className="container">
             <div className="eyebrow mono">01 · About</div>
-            <div className="about-grid">
-              <div className="about-copy">
-                <h2 className="section-title">
-                  A product thinker who starts with the user problem, not the feature.
-                </h2>
-                <p>
-                  I&apos;m an aspiring product manager with two hands-on product
-                  internships in <strong>fintech and insurance</strong>. My work lives
-                  at the intersection of{" "}
-                  <strong>user research, funnel analytics, and CRM design</strong> —
-                  figuring out where users drop off, why, and what to build to close the
-                  gap.
-                </p>
-                <p>
-                  At <strong>Ambak Home Loans</strong> I diagnosed why 2,500+ registered
-                  partners weren&apos;t using our app, built the first activation funnels
-                  in CleverTap, and defined a Partner Activation CRM. At{" "}
-                  <strong>PolicyBazaar for Business</strong> I shaped a sales-insight
-                  platform that gave renewal reps client risk visibility for the first
-                  time.
-                </p>
-                <p>
-                  I come from a <strong>Computer Science</strong> background, so
-                  I&apos;m comfortable talking to engineers, writing SQL, and building
-                  models — but I&apos;m happiest translating messy business problems into
-                  clear product requirements.
-                </p>
-                <div className="pills">
-                  <span className="pill">Product Discovery</span>
-                  <span className="pill">Funnel Analytics</span>
-                  <span className="pill">CRM Design</span>
-                  <span className="pill">Activation &amp; Growth</span>
-                  <span className="pill">Data Storytelling</span>
-                </div>
-              </div>
-              <div className="code-card">
-                <div className="code-top">
-                  <span className="c r"></span>
-                  <span className="c y"></span>
-                  <span className="c g"></span>
-                  <span className="fname">profile.ts</span>
-                </div>
-                <div className="code-body">
-                  <div>
-                    <span className="tk-key">const</span>{" "}
-                    <span className="tk-var">pm</span> ={" "}
-                    <span className="tk-str">&quot;Dhairya Rastogi&quot;</span>
-                  </div>
-                  <div>&nbsp;</div>
-                  <div>
-                    <span className="tk-com">// what I optimise for</span>
-                  </div>
-                  <div>
-                    <span className="tk-var">focus</span>: [
-                    <span className="tk-str">&quot;Activation&quot;</span>,{" "}
-                    <span className="tk-str">&quot;Retention&quot;</span>,{" "}
-                    <span className="tk-str">&quot;Insight&quot;</span>]
-                  </div>
-                  <div>
-                    <span className="tk-var">domains</span>: [
-                    <span className="tk-str">&quot;Fintech&quot;</span>,{" "}
-                    <span className="tk-str">&quot;Insurance&quot;</span>]
-                  </div>
-                  <div>&nbsp;</div>
-                  <div>
-                    <span className="tk-com">// how I work</span>
-                  </div>
-                  <div>
-                    <span className="tk-var">toolkit</span>: [
-                    <span className="tk-str">&quot;CleverTap&quot;</span>,{" "}
-                    <span className="tk-str">&quot;Power BI&quot;</span>,
-                  </div>
-                  <div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span className="tk-str">&quot;QuickSight&quot;</span>,{" "}
-                    <span className="tk-str">&quot;SQL&quot;</span>]
-                  </div>
-                  <div>
-                    <span className="tk-var">education</span>:{" "}
-                    <span className="tk-str">&quot;B.Tech CSE, Amity &apos;26&quot;</span>
-                  </div>
-                  <div>&nbsp;</div>
-                  <div>
-                    <span className="tk-fn">buildProduct</span>(
-                    <span className="tk-var">userProblem</span>) {"{"}
-                  </div>
-                  <div>
-                    &nbsp;&nbsp;<span className="tk-key">return</span>{" "}
-                    <span className="tk-var">research</span> →{" "}
-                    <span className="tk-var">define</span> →{" "}
-                    <span className="tk-var">ship</span>
-                  </div>
-                  <div>{"}"}</div>
-                </div>
-              </div>
+            <h2 className="section-title">
+              A product thinker who starts with the user problem, not the feature.
+            </h2>
+            <p className="section-sub">
+              Two product internships in fintech and insurance. I work where{" "}
+              <strong>user research, funnel analytics and CRM design</strong> meet —
+              finding where users drop off, why, and what to build to close the gap. A
+              Computer Science background means I can write the SQL and read the model,
+              but the work I care about is turning a messy business problem into a clear
+              requirement.
+            </p>
+            <div className="pills">
+              <span className="pill">Product Discovery</span>
+              <span className="pill">Funnel Analytics</span>
+              <span className="pill">CRM Design</span>
+              <span className="pill">Activation &amp; Growth</span>
+              <span className="pill">AI Evals &amp; Guardrails</span>
+              <span className="pill">Data Storytelling</span>
             </div>
           </div>
         </section>
@@ -215,7 +109,7 @@ export default function Home() {
           <div className="container">
             <div className="eyebrow mono">02 · Experience</div>
             <h2 className="section-title">
-              Two product internships, both shipped real, measurable outcomes.
+              Two product internships, both shipped measurable outcomes.
             </h2>
             <div className="timeline">
               <div className="tl-item">
@@ -229,25 +123,18 @@ export default function Home() {
                 </h3>
                 <ul>
                   <li>
-                    Ran primary research with 30–40 Relationship Managers to diagnose why
-                    2,500+ registered partners weren&apos;t independently using Ambak
-                    Saathi — found partners routed leads through RMs and existing bank
-                    tie-ups, bypassing the app entirely.
+                    Interviewed <strong>30–40 Relationship Managers</strong> to find why
+                    2,500+ registered partners never used the app — they were routing
+                    leads through RMs and bank tie-ups, bypassing it entirely.
                   </li>
                   <li>
-                    Built CleverTap adoption funnels for 4 core features (CIBIL, APF,
-                    Banker&apos;s Directory, My Earnings), setting the first baseline
-                    activation metrics and exposing sub-20% adoption on the flagship CIBIL
-                    feature.
+                    Built the first activation funnels in CleverTap across 4 core
+                    features, exposing <strong>sub-20% adoption</strong> on the flagship
+                    CIBIL feature.
                   </li>
                   <li>
-                    Defined requirements for a Partner Activation CRM inside Ambak Sangam
-                    — real-time activation status, retention health (Active / At-Risk /
-                    Dormant / Churned), and next-best-action per partner.
-                  </li>
-                  <li>
-                    Planned and shipped 2 engagement campaigns via WhatsApp (Serri.ai) and
-                    Email API to drive network engagement and prevent silent churn.
+                    Defined a <strong>Partner Activation CRM</strong> — live activation
+                    status, retention health, and next-best-action per partner.
                   </li>
                 </ul>
               </div>
@@ -263,22 +150,17 @@ export default function Home() {
                 </h3>
                 <ul>
                   <li>
-                    Identified that enterprise renewal reps had zero visibility into
-                    client claims history, and defined requirements for Nautica — a
-                    sales-insight platform on AWS QuickSight.
+                    Found that enterprise renewal reps had{" "}
+                    <strong>no visibility into client claims history</strong>, and defined
+                    Nautica — a sales-insight platform on AWS QuickSight.
                   </li>
                   <li>
-                    Scoped dashboards covering Incurred Claim Ratios, Loss Ratios,
-                    projected renewal premiums, and client risk profiles — a data-backed
-                    foundation for renewal negotiations.
+                    Scoped dashboards for claim ratios, loss ratios and projected renewal
+                    premiums, giving reps a data-backed basis for negotiation.
                   </li>
                   <li>
-                    Designed logic to separate recurring vs. non-recurring medical claims,
-                    improving risk-assessment accuracy by an estimated 15%.
-                  </li>
-                  <li>
-                    Cut manual reporting effort by ~30% and delivered 20+ ad-hoc
-                    leadership analyses for the Employee Benefits strategy team.
+                    Cut manual reporting effort by <strong>~30%</strong> and delivered 20+
+                    ad-hoc analyses for the Employee Benefits strategy team.
                   </li>
                 </ul>
               </div>
@@ -286,116 +168,34 @@ export default function Home() {
           </div>
         </section>
 
-
-
-
-        {/* PROJECTS */}
-        <section id="projects">
+        {/* EDUCATION */}
+        <section id="education">
           <div className="container">
-            <div className="eyebrow mono">03 · Builds</div>
-            <h2 className="section-title">
-              Side projects where I built the product end-to-end.
-            </h2>
-            <div className="proj-grid">
-              {/* PolicyLens — featured, spans the full grid */}
-              <div className="proj" style={{ gridColumn: "1 / -1" }}>
-                <h3>PolicyLens — &ldquo;Is my claim actually covered?&rdquo;</h3>
-                <p>
-                  People find out what their health policy excludes at the hospital counter,
-                  not before — the answer is already in the 40-page PDF they own, they just
-                  can&apos;t read it. Upload a policy, describe a real situation, and get a
-                  verdict with the documents you&apos;ll need and the risks that get claims
-                  rejected — <strong>every statement citing the exact clause and page</strong>.
-                </p>
-                <p>
-                  The product decision that shaped it: not all errors cost the same. A false
-                  &ldquo;not covered&rdquo; costs a phone call; a false &ldquo;covered&rdquo;
-                  sends someone to file a claim that gets rejected. So I made{" "}
-                  <strong>dangerous-error rate</strong> the north-star metric, target zero, and
-                  built a 24-scenario eval suite that gates every change. It caught my own fix
-                  introducing a new dangerous error — a sub-limit overriding an unmet waiting
-                  period — which I traced to rule precedence and fixed with sequential gates.
-                </p>
-                <div className="cs-impact">
-                  <div>
-                    <div className="num">24</div>
-                    <div className="lbl">clause-grounded eval scenarios, run on every change</div>
-                  </div>
-                  <div>
-                    <div className="num">0</div>
-                    <div className="lbl">dangerous errors — the ship / no-ship gate</div>
-                  </div>
-                  <div>
-                    <div className="num">91.7%</div>
-                    <div className="lbl">pass rate, up from 79.2% at baseline</div>
-                  </div>
-                </div>
-                <div className="cs-stack" style={{ marginTop: 20 }}>
-                  <span>Next.js</span>
-                  <span>Llama 3.3</span>
-                  <span>RAG + citations</span>
-                  <span>Eval design</span>
-                  <span>AI guardrails</span>
-                </div>
-                <div className="cs-links">
-                  <a
-                    className="cs-link cs-link-primary"
-                    href="https://policylens-nine.vercel.app"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    Try it live →
-                  </a>
-                  <a
-                    className="cs-link"
-                    href="https://policylens-nine.vercel.app/demo"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    45-second demo
-                  </a>
-                  <a
-                    className="cs-link"
-                    href="https://github.com/dhairya1411/Policylens"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    Code &amp; eval suite
-                  </a>
-                </div>
+            <div className="eyebrow mono">03 · Education</div>
+            <div className="edu">
+              <div>
+                <h3>B.Tech, Computer Science &amp; Engineering</h3>
+                <p>Amity University, Lucknow</p>
               </div>
+              <span className="edu-year mono">2022 — 2026</span>
+            </div>
+          </div>
+        </section>
 
-              <div className="proj">
-                <h3>ISL Vision — Real-Time Sign Language Recognition</h3>
-                <p>
-                  Fine-tuned VideoMAE (Vision Transformer) on a 262-class Indian Sign
-                  Language dataset to 91.45% Top-1 accuracy (~25pts over CNN-LSTM
-                  baselines), then built a real-time translator that runs webcam inference
-                  on CPU with a confidence score.
-                </p>
-                <div className="cs-stack">
-                  <span>Python</span>
-                  <span>PyTorch</span>
-                  <span>HuggingFace</span>
-                  <span>OpenCV</span>
-                </div>
-              </div>
-              <div className="proj">
-                <h3>Retail Customer Behavior Analytics</h3>
-                <p>
-                  Analysed 3,900 transactions ($233K revenue) in Python, PostgreSQL &amp;
-                  Power BI — found male customers drove 2.1x more revenue than female, and
-                  flagged 839 above-average spenders who still buy on discount as a
-                  margin-recovery segment, alongside 701 returning buyers as the target for
-                  a loyalty program.
-                </p>
-                <div className="cs-stack">
-                  <span>Python</span>
-                  <span>Pandas</span>
-                  <span>SQL</span>
-                  <span>Power BI</span>
-                </div>
-              </div>
+        {/* WORK TEASER */}
+        <section id="work-teaser">
+          <div className="container">
+            <div className="eyebrow mono">04 · Work</div>
+            <h2 className="section-title">
+              Products I built end-to-end — problem, guardrails, evals, ship.
+            </h2>
+            <p className="section-sub">
+              From a shipped AI insurance product with its own eval suite to a governed
+              multi-agent platform. Each one has a write-up of how it works and what it
+              got wrong.
+            </p>
+            <div className="btns">
+              <a className="btn btn-primary" href="/work">See all work →</a>
             </div>
           </div>
         </section>
@@ -404,13 +204,13 @@ export default function Home() {
         <section id="contact" className="contact">
           <div className="container">
             <div className="eyebrow mono" style={{ justifyContent: "center" }}>
-              04 · Contact
+              05 · Contact
             </div>
             <h2>Let&apos;s build something users actually adopt.</h2>
             <p>
-              I&apos;m looking for an <strong>Associate Product Manager</strong> role
-              where I can own activation, retention, and the metrics that matter. Happy to
-              walk through any case study.
+              I&apos;m looking for an <strong>Associate Product Manager</strong> role where
+              I can own activation, retention, and the metrics that matter. Happy to walk
+              through any project.
             </p>
             <div className="contact-links">
               <a className="btn btn-primary" href="mailto:dhairyarastogi1411@gmail.com">
@@ -432,26 +232,12 @@ export default function Home() {
               >
                 GitHub
               </a>
-              <a
-                className="btn btn-ghost"
-                href="/Dhairya_Rastogi_Resume.pdf"
-                target="_blank"
-                rel="noopener"
-              >
-                Résumé
-              </a>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="foot">
-        <div className="container foot-inner">
-          <span>© 2026 Dhairya Rastogi</span>
-          <span>dhairyarastogi1411@gmail.com · +91 74608 33833</span>
-          <span>Built for product roles · Amity University, CSE &apos;26</span>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
