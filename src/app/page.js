@@ -297,6 +297,74 @@ export default function Home() {
               Side projects where I built the product end-to-end.
             </h2>
             <div className="proj-grid">
+              {/* PolicyLens — featured, spans the full grid */}
+              <div className="proj" style={{ gridColumn: "1 / -1" }}>
+                <h3>PolicyLens — &ldquo;Is my claim actually covered?&rdquo;</h3>
+                <p>
+                  People find out what their health policy excludes at the hospital counter,
+                  not before — the answer is already in the 40-page PDF they own, they just
+                  can&apos;t read it. Upload a policy, describe a real situation, and get a
+                  verdict with the documents you&apos;ll need and the risks that get claims
+                  rejected — <strong>every statement citing the exact clause and page</strong>.
+                </p>
+                <p>
+                  The product decision that shaped it: not all errors cost the same. A false
+                  &ldquo;not covered&rdquo; costs a phone call; a false &ldquo;covered&rdquo;
+                  sends someone to file a claim that gets rejected. So I made{" "}
+                  <strong>dangerous-error rate</strong> the north-star metric, target zero, and
+                  built a 24-scenario eval suite that gates every change. It caught my own fix
+                  introducing a new dangerous error — a sub-limit overriding an unmet waiting
+                  period — which I traced to rule precedence and fixed with sequential gates.
+                </p>
+                <div className="cs-impact">
+                  <div>
+                    <div className="num">24</div>
+                    <div className="lbl">clause-grounded eval scenarios, run on every change</div>
+                  </div>
+                  <div>
+                    <div className="num">0</div>
+                    <div className="lbl">dangerous errors — the ship / no-ship gate</div>
+                  </div>
+                  <div>
+                    <div className="num">91.7%</div>
+                    <div className="lbl">pass rate, up from 79.2% at baseline</div>
+                  </div>
+                </div>
+                <div className="cs-stack" style={{ marginTop: 20 }}>
+                  <span>Next.js</span>
+                  <span>Llama 3.3</span>
+                  <span>RAG + citations</span>
+                  <span>Eval design</span>
+                  <span>AI guardrails</span>
+                </div>
+                <div className="cs-links">
+                  <a
+                    className="cs-link cs-link-primary"
+                    href="https://policylens-nine.vercel.app"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Try it live →
+                  </a>
+                  <a
+                    className="cs-link"
+                    href="https://policylens-nine.vercel.app/demo"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    45-second demo
+                  </a>
+                  <a
+                    className="cs-link"
+                    href="https://github.com/dhairya1411/Policylens"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Code &amp; eval suite
+                  </a>
+                </div>
+              </div>
+
               <div className="proj">
                 <h3>ISL Vision — Real-Time Sign Language Recognition</h3>
                 <p>
