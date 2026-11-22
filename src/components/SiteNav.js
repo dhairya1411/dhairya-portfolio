@@ -19,15 +19,6 @@ export default function SiteNav({ active }) {
           <a href="/work" onClick={closeMenu} aria-current={active === "work" ? "page" : undefined}>
             Work
           </a>
-          <a
-            className="nav-cta"
-            href="/Dhairya_Rastogi_Resume.pdf"
-            target="_blank"
-            rel="noopener"
-            onClick={closeMenu}
-          >
-            Resume ↗
-          </a>
         </nav>
         <button
           className="menu-btn"

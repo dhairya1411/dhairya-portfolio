@@ -43,36 +43,29 @@ export default function Home() {
             <p className="lead">
               I turn <strong>user research and product data into decisions</strong> —
               diagnosing why users don&apos;t activate, defining the CRM and features that
-              fix it, and shipping campaigns that move the metric. Currently a Product
-              Intern at <strong>Ambak Home Loans</strong>.
+              fix it, and shipping campaigns that move the metric. Most recently a Product
+              Intern at <strong>Ambak Home Loans</strong>; before that,{" "}
+              <strong>PolicyBazaar for Business</strong>.
             </p>
             <div className="btns">
               <a className="btn btn-primary" href="/work">View My Work →</a>
-              <a
-                className="btn btn-ghost"
-                href="/Dhairya_Rastogi_Resume.pdf"
-                target="_blank"
-                rel="noopener"
-              >
-                Download Résumé
-              </a>
             </div>
             <div className="hero-stats">
               <div className="stat">
-                <div className="num accent">2,500+</div>
-                <div className="lbl">partners analysed for activation gaps</div>
+                <div className="num accent">20% → 60%</div>
+                <div className="lbl">CIBIL feature adoption after app-flow redesign</div>
+              </div>
+              <div className="stat">
+                <div className="num accent">+27%</div>
+                <div className="lbl">renewal conversion lift from Nautica</div>
+              </div>
+              <div className="stat">
+                <div className="num accent">₹4.5 Cr</div>
+                <div className="lbl">revenue influenced by lifecycle campaigns</div>
               </div>
               <div className="stat">
                 <div className="num accent">30–40</div>
                 <div className="lbl">user interviews conducted</div>
-              </div>
-              <div className="stat">
-                <div className="num accent">~30%</div>
-                <div className="lbl">manual reporting effort cut</div>
-              </div>
-              <div className="stat">
-                <div className="num accent">2</div>
-                <div className="lbl">product internships shipped</div>
               </div>
             </div>
           </div>
@@ -114,7 +107,7 @@ export default function Home() {
             <div className="timeline">
               <div className="tl-item">
                 <div className="tl-meta">
-                  <span>May 2026 — Present</span>
+                  <span>May 2026 — Oct 2026</span>
                   <span>·</span>
                   <span>Gurugram, HR</span>
                 </div>
@@ -123,39 +116,39 @@ export default function Home() {
                 </h3>
                 <ul>
                   <li>
-                    Ran primary research with <strong>30–40 Relationship Managers</strong>{" "}
-                    to diagnose why 2,500+ registered partners weren&apos;t independently
-                    using Ambak Saathi — uncovering that partners submitted leads via RMs
-                    and processed loans through existing bank tie-ups, bypassing the app
-                    entirely.
+                    Uncovered <strong>sub-20% adoption</strong> on the flagship CIBIL feature
+                    through CleverTap funnel analysis across 4 core features (CIBIL Score, APF,
+                    Banker&apos;s Directory, My Earnings); diagnosed the root cause via primary
+                    research with <strong>30–40 Relationship Managers</strong> — partners were
+                    bypassing the app entirely, routing leads through RMs and existing bank
+                    tie-ups.
                   </li>
                   <li>
-                    Built <strong>CleverTap feature adoption funnels</strong> for 4 core
-                    app features (CIBIL Score, APF, Banker&apos;s Directory, My Earnings),
-                    establishing the first baseline activation metrics and revealing{" "}
-                    <strong>sub-20% adoption</strong> on the flagship CIBIL feature.
+                    Drove a product redesign based on the research: gated the DSA code behind
+                    mandatory feature usage (CIBIL check, offer calculator) and ran a 3-month
+                    partner training program to shift the app from &ldquo;RM tool&rdquo; to
+                    self-serve platform — lifting <strong>CIBIL adoption from 20% to
+                    60%</strong> and increasing fetch requests by <strong>40%</strong>.
                   </li>
                   <li>
-                    Defined requirements for a <strong>Partner Activation CRM</strong>{" "}
-                    integrated into Ambak Sangam, giving the onboarding team real-time
-                    visibility into activation status, retention health (Active / At Risk /
-                    Dormant / Churned), and the recommended next action per partner.
+                    Migrated all campaign triggers from the backend to{" "}
+                    <strong>CleverTap</strong>, cutting template-change turnaround from 1–2 days
+                    to same-day and giving the business team self-serve control over WhatsApp,
+                    SMS and email campaigns — with the delivery, open and rejection tracking
+                    the backend never had.
                   </li>
                   <li>
-                    <strong>Removed the engineering dependency from partner
-                    communications</strong> — migrated triggers out of the backend into
-                    CleverTap, so the team now builds and fires campaigns self-serve
-                    without waiting on a release.
+                    Automated <strong>Partner Experience (PET)</strong> and{" "}
+                    <strong>Pre-Sales (PST)</strong> workflows: consolidated partner data into
+                    a single-view dashboard, reducing per-lead processing from 10–15 manual
+                    steps to 5–7 clicks and saving executives <strong>~4 hours/day</strong> of
+                    manual CRM search.
                   </li>
                   <li>
-                    Automated the workflows of the <strong>Partner Experience</strong> and{" "}
-                    <strong>Pre-Sales (PST) ops</strong> teams, cutting their manual effort
-                    by <strong>70%</strong>.
-                  </li>
-                  <li>
-                    Audited CleverTap event mapping across Ambak Saathi and proposed a
-                    corrected event nomenclature, improving analytics reliability for
-                    product decisions.
+                    Defined requirements for a <strong>Partner Activation CRM</strong> in Ambak
+                    Sangam — real-time activation status, retention-health segmentation
+                    (Active / At Risk / Dormant / Churned) and recommended next actions to
+                    systematise partner lifecycle management.
                   </li>
                 </ul>
               </div>
@@ -170,37 +163,37 @@ export default function Home() {
                   <span className="org">PolicyBazaar for Business</span>
                 </h3>
                 <p className="tl-project">
-                  Nautica — Sales Insight Generation Platform (Employee Benefits)
+                  Employee Benefits · Nautica — Sales Insight Platform
                 </p>
                 <ul>
                   <li>
-                    Identified a critical information gap in the enterprise renewal sales
-                    process — reps had <strong>zero visibility into client claims
-                    history</strong> — and defined the product requirements for Nautica, a
-                    Sales Insight Platform built on AWS QuickSight.
+                    Identified that enterprise renewal reps were negotiating blind —{" "}
+                    <strong>zero visibility into client claims history</strong>, leading to
+                    uncompetitive pricing and lost renewals. Defined PRDs and shipped Nautica,
+                    an in-house Sales Insight Platform with auto-refreshing dashboards for
+                    Incurred Claim Ratios, Loss Ratios, risk profiles and projected premiums —
+                    lifting <strong>renewal conversion rates by 27%</strong>.
                   </li>
                   <li>
-                    Defined dashboard scope covering Incurred Claim Ratios, Loss Ratios,
-                    projected renewal premiums and client risk profiles, giving the sales
-                    team a data-backed foundation for renewal negotiations for the first
-                    time.
+                    Designed a claims-segmentation model separating recurring from one-time
+                    medical expenses; back-tested against historical claims data and
+                    reclassified <strong>~15% of accounts</strong> previously over-scored by
+                    outlier claims, so reps could price renewals competitively for genuinely
+                    low-risk clients.
                   </li>
                   <li>
-                    Defined <strong>logic to segment recurring vs. non-recurring medical
-                    claims</strong>, ensuring risk scores reflected ongoing client risk
-                    rather than one-time event distortion — improving risk-assessment
-                    accuracy by an estimated <strong>15%</strong>.
+                    Designed and owned <strong>lifecycle campaigns</strong> (WhatsApp, SMS)
+                    across 10+ B2B insurance verticals (Group Health, Marine, Cyber, Workmen
+                    Compensation): drop-off re-engagement flows for mid-funnel prospects and a
+                    9-touch renewal cadence (60 days to 1 day before expiry). Diagnosed and
+                    resolved deliverability failures — campaigns influenced{" "}
+                    <strong>₹4.5 Cr</strong> in renewal and re-engagement revenue over 6
+                    months.
                   </li>
                   <li>
-                    Reduced manual reporting effort by <strong>~30%</strong> through
-                    automated QuickSight dashboards and delivered{" "}
-                    <strong>20+ ad-hoc leadership analyses</strong>, accelerating decisions
-                    across the Employee Benefits strategy team.
-                  </li>
-                  <li>
-                    Acted as the cross-functional connector between sales, strategy and
-                    data/tech — translating business needs into data requirements and
-                    surfacing insights in sales-ready language.
+                    Acted as the cross-functional bridge between sales, strategy and
+                    data/tech — translating business questions into data requirements and
+                    packaging analytical outputs into sales-ready renewal playbooks.
                   </li>
                 </ul>
               </div>
