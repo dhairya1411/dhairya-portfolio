@@ -13,7 +13,7 @@ const PROJECTS = [
     tagline: "“Is my claim actually covered?”",
     kind: "InsurTech · Shipped AI product",
     body: "An AI product that reads your health insurance policy and answers the only question that matters — with every statement citing the exact clause and page from your own document. I made dangerous-error rate the north-star metric and built a 24-scenario eval suite that fails the build if a single one appears.",
-    stack: ["Next.js", "Llama 3.3", "RAG + citations", "Eval design"],
+    stack: ["Next.js", "GPT-OSS 120B", "RAG + citations", "Eval design"],
     links: [
       { label: "Read the case study →", href: "/work/policylens", primary: true },
       { label: "Try it live", href: "https://policylens-nine.vercel.app", external: true },

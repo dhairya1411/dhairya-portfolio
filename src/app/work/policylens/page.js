@@ -31,7 +31,7 @@ export default function PolicyLensCaseStudy() {
               </div>
               <div>
                 <span className="k mono">Stack</span>
-                <p>Next.js 14 · Llama 3.3 70B · server-side PDF extraction</p>
+                <p>Next.js 14 · GPT-OSS 120B on Groq (migrated from Llama 3.3) · server-side PDF extraction</p>
               </div>
               <div>
                 <span className="k mono">Constraint</span>
@@ -260,6 +260,62 @@ export default function PolicyLensCaseStudy() {
               that actually matters.
             </p>
 
+            <h2>v4 — a forced model migration</h2>
+            <p>
+              Months after launch, the live product started failing every request. Groq
+              had retired Llama 3.3. I moved to <strong>GPT-OSS 120B</strong>, Groq&apos;s
+              recommended replacement — and the first full eval came back at{" "}
+              <strong>87.0% with a dangerous error</strong> that Llama had never made: a
+              diabetic of five years, on a 12-month-old policy, was told a diabetes
+              complication was <em>covered</em>.
+            </p>
+            <p>
+              The new model had read the policy&apos;s 48-month look-back literally:
+              diagnosed five years ago, so &ldquo;not pre-existing.&rdquo; Any underwriter
+              would say an ongoing, treated condition is pre-existing. It had even listed
+              the pre-existing waiting period as a risk — then answered &ldquo;covered&rdquo;
+              anyway. It also began inventing hypotheticals (&ldquo;this <em>might</em> be
+              pre-existing&rdquo;) for scenarios that never said so.
+            </p>
+            <p>Three fixes, each targeted at one failure:</p>
+            <ul>
+              <li>
+                <strong>A pre-existing-disease rule</strong> with the diabetes case as a worked
+                example, plus a &ldquo;use only the facts given&rdquo; rule against
+                speculation.
+              </li>
+              <li>
+                <strong>A guardrail in code, not just the prompt:</strong> if the model says
+                &ldquo;Likely covered&rdquo; while its own risk list hedges on a
+                pre-existing or specific-illness wait, the verdict is downgraded to
+                &ldquo;Unclear.&rdquo; The dangerous direction is now blocked even if the
+                prompt fails.
+              </li>
+              <li>
+                <strong>A sturdier JSON parser</strong> — the new model sometimes appended a
+                second object, which surfaced as an API error.
+              </li>
+            </ul>
+            <div className="cs-impact">
+              <div>
+                <div className="num">24/24</div>
+                <div className="lbl">scenarios pass on GPT-OSS 120B</div>
+              </div>
+              <div>
+                <div className="num">0.0%</div>
+                <div className="lbl">dangerous-error rate, held through the migration</div>
+              </div>
+              <div>
+                <div className="num">87% → 100%</div>
+                <div className="lbl">first post-migration run → after fixes</div>
+              </div>
+            </div>
+            <p className="callout">
+              A model is a dependency that can be retired under you. Without the suite, I
+              would have swapped the model name, seen the app load, and shipped a dangerous
+              error to production.
+            </p>
+
             <h2>What I&apos;d tell a hiring manager</h2>
             <p className="callout">
               The interesting part isn&apos;t that I shipped an AI app in a weekend. It&apos;s
@@ -270,6 +326,10 @@ export default function PolicyLensCaseStudy() {
 
             <h2>What&apos;s next</h2>
             <ul>
+              <li>
+                Held-out scenarios the prompt was never tuned on — 24/24 on the set I
+                iterated against is a ceiling, not proof of generalisation
+              </li>
               <li>Real-user testing with policyholders using their own policies</li>
               <li>In-product feedback capture, to grow the eval set from real usage</li>
               <li>Multi-policy comparison and waiting-period countdown reminders</li>

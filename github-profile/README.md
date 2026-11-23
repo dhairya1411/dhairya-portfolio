@@ -38,8 +38,12 @@ and built a **24-scenario eval suite** that fails the build if a single one appe
 
 > That suite caught my own prompt fix introducing a *new* dangerous error. Root cause was rule
 > precedence. Went from 79.2% → **91.7% pass, 0 dangerous errors**.
+>
+> Then Groq retired the model. The forced migration to GPT-OSS 120B broke a case Llama had right
+> (an ongoing diabetic read as *not* pre-existing) — the suite caught it before release. Now
+> **24/24 pass, 0 dangerous errors**.
 
-`Next.js` · `Llama 3.3` · `RAG + citations` · `eval-driven development`
+`Next.js` · `GPT-OSS 120B (Groq)` · `RAG + citations` · `eval-driven development`
 **[▶ 45-second demo](https://policylens-nine.vercel.app/demo)** · **[Try it live](https://policylens-nine.vercel.app)**
 
 ---
